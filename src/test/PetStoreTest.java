@@ -90,9 +90,33 @@ public class PetStoreTest {
 	    homePage = signInPage.clickLoginButton();
 	    assertTrue(homePage.myAccountButtonExists());
 	}
+	
+	@Test
+	public void verifyBrowsing() {
+		
+	}
+	
+	@Test
+	public void verifySearch() {
+		
+	}
+	
+	@Test
+	public void verifyAddAndRemove() {
+		
+	}
+	
+	@Test
+	public void verifyItemQuantityUpdate() {
+		
+	}
+	
+	@Test void verifyOrder() {
+		
+	}
 
 	@AfterTest
-	public void Cleanup() {
+	public void cleanup() {
 		driver.quit();
 	}
 
