@@ -1,5 +1,7 @@
 package pomClasses;
 
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -21,6 +23,10 @@ public class HomePage {
 	private WebElement topBarDogLink;
 	@FindBy(css = "area[alt='Reptiles']")
 	private WebElement reptileImageLink;
+	@FindBy(xpath = "//title")
+	private WebElement titleElement;
+	@FindBy(xpath = "//a[text()='My Account']")
+	private List<WebElement> myAccountLink;	
 	
 	public HomePage(WebDriver driver) {
 		this.driver = driver;
@@ -42,4 +48,12 @@ public class HomePage {
 		sideBarFishLink.click();
 		return new FishProductListPage(driver);
 	}
+	
+	public String getTitleString() {
+		return titleElement.getText();
+	}
+	
+	public boolean myAccountButtonExists() {
+		return myAccountLink.size() > 0;
+	}	
 }
