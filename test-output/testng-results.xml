@@ -2,24 +2,24 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-08-02T10:00:08 CDT" name="Default suite" finished-at="2023-08-02T10:00:18 CDT" duration-ms="10568">
+  <suite started-at="2023-08-02T13:06:31 CDT" name="Default suite" finished-at="2023-08-02T13:06:37 CDT" duration-ms="6428">
     <groups>
     </groups>
-    <test started-at="2023-08-02T10:00:08 CDT" name="Default test" finished-at="2023-08-02T10:00:18 CDT" duration-ms="10568">
+    <test started-at="2023-08-02T13:06:31 CDT" name="Default test" finished-at="2023-08-02T13:06:37 CDT" duration-ms="6428">
       <class name="test.PetStoreTest">
-        <test-method is-config="true" signature="browserSetup()[pri:0, instance:test.PetStoreTest@1f59a598]" started-at="2023-08-02T10:00:08 CDT" name="browserSetup" finished-at="2023-08-02T10:00:10 CDT" duration-ms="2511" status="PASS">
+        <test-method is-config="true" signature="browserSetup()[pri:0, instance:test.PetStoreTest@1f59a598]" started-at="2023-08-02T13:06:31 CDT" name="browserSetup" finished-at="2023-08-02T13:06:34 CDT" duration-ms="3054" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- browserSetup -->
-        <test-method is-config="true" signature="generateUsername()[pri:0, instance:test.PetStoreTest@1f59a598]" started-at="2023-08-02T10:00:10 CDT" name="generateUsername" finished-at="2023-08-02T10:00:10 CDT" duration-ms="2" status="PASS">
+        <test-method is-config="true" signature="generateUsername()[pri:0, instance:test.PetStoreTest@1f59a598]" started-at="2023-08-02T13:06:34 CDT" name="generateUsername" finished-at="2023-08-02T13:06:34 CDT" duration-ms="35" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- generateUsername -->
-        <test-method signature="verifySignup()[pri:0, instance:test.PetStoreTest@1f59a598]" started-at="2023-08-02T10:00:10 CDT" name="verifySignup" finished-at="2023-08-02T10:00:17 CDT" duration-ms="7173" status="PASS">
+        <test-method signature="verifySignup()[pri:0, instance:test.PetStoreTest@1f59a598]" started-at="2023-08-02T13:06:34 CDT" name="verifySignup" finished-at="2023-08-02T13:06:37 CDT" duration-ms="2516" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifySignup -->
-        <test-method is-config="true" signature="Cleanup()[pri:0, instance:test.PetStoreTest@1f59a598]" started-at="2023-08-02T10:00:17 CDT" name="Cleanup" finished-at="2023-08-02T10:00:18 CDT" duration-ms="852" status="PASS">
+        <test-method is-config="true" signature="Cleanup()[pri:0, instance:test.PetStoreTest@1f59a598]" started-at="2023-08-02T13:06:37 CDT" name="Cleanup" finished-at="2023-08-02T13:06:37 CDT" duration-ms="795" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Cleanup -->

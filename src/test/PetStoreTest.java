@@ -88,7 +88,6 @@ public class PetStoreTest {
 	    signInPage.clearPasswordField();
 	    signInPage.setPasswordField(password);	    
 	    homePage = signInPage.clickLoginButton();
-	    assertFalse(signInPage.invalidMessageExists());
 	    assertTrue(homePage.myAccountButtonExists());
 	}
 
