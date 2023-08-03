@@ -16,4 +16,9 @@ public class BulldogItemListPage {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
+	
+	public MaleAdultBulldogItemPage clickMaleAdultBulldogItemLink() {
+		maleAdultBulldogItemLink.click();
+		return new MaleAdultBulldogItemPage(driver);
+	}
 }

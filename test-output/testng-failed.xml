@@ -6,9 +6,8 @@
       <class name="test.PetStoreTest">
         <methods>
           <include name="browserSetup"/>
-          <include name="generateUsername"/>
-          <include name="verifySignup"/>
-          <include name="Cleanup"/>
+          <include name="cleanup"/>
+          <include name="verifyBrowsingBirds"/>
         </methods>
       </class> <!-- test.PetStoreTest -->
     </classes>

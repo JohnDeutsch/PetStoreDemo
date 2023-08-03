@@ -16,4 +16,9 @@ public class IguanaItemListPage {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
+	
+	public GreenAdultIguanaItemPage clickGreenAdultIguanaItemLink() {
+		greenAdultIguanaItemLink.click();
+		return new GreenAdultIguanaItemPage(driver);
+	}
 }

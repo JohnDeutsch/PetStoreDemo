@@ -10,23 +10,22 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class ReptilesProductListPage {
-
+public class BirdsProductListPage {
 	private WebDriver driver;
 	
-	@FindBy(xpath = "//a[text()='RP-LI-02']")
-	private WebElement iguanaItemListLink;
+	@FindBy(xpath = "//a[text()='AV-SB-02']")
+	private WebElement finchItemListLink;
 	
-	public ReptilesProductListPage(WebDriver driver) {
+	public BirdsProductListPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
 	
-	public IguanaItemListPage clickIguanaItemListLink() {
+	public FinchItemListPage clickFinchItemListLink() {		
 		// this product list page takes longer to load its elements than the others
 		new WebDriverWait(driver, Duration.ofSeconds(20))
-		.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[text()='RP-LI-02']")));
-		iguanaItemListLink.click();
-		return new IguanaItemListPage(driver);
+		.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[text()='AV-SB-02']")));
+		finchItemListLink.click();
+		return new FinchItemListPage(driver);
 	}
 }

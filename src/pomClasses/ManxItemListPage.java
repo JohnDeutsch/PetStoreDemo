@@ -16,4 +16,9 @@ public class ManxItemListPage {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
+	
+	public TaillessManxItemPage clickTaillessManxItemLink() {
+		taillessManxItemLink.click();
+		return new TaillessManxItemPage(driver);
+	}
 }

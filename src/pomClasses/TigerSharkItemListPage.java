@@ -16,4 +16,9 @@ public class TigerSharkItemListPage {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
+	
+	public ToothlessTigerSharkItemPage clickToothlessTigerSharkItemLink() {
+		toothlessTigerSharkItemLink.click();
+		return new ToothlessTigerSharkItemPage(driver);
+	}
 }
