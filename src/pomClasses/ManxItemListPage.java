@@ -1,5 +1,7 @@
 package pomClasses;
 
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,6 +13,8 @@ public class ManxItemListPage {
 	
 	@FindBy(xpath = "//a[text()='EST-14']")
 	private WebElement taillessManxItemLink;
+	@FindBy(xpath = "//h2[text()='Manx']")
+	private List<WebElement> manxHeader;
 	
 	public ManxItemListPage(WebDriver driver) {
 		this.driver = driver;
@@ -20,5 +24,9 @@ public class ManxItemListPage {
 	public TaillessManxItemPage clickTaillessManxItemLink() {
 		taillessManxItemLink.click();
 		return new TaillessManxItemPage(driver);
+	}
+	
+	public boolean manxHeaderExists() {
+		return manxHeader.size() > 0;
 	}
 }

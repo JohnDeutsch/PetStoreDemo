@@ -49,7 +49,11 @@ public class HomePage {
 		searchField.sendKeys(searchString);
 	}
 	
-	//public ItemPage clickSearchButton()
+	// only using this method to search for manx
+	public ManxSearchResultsPage clickSearchButton() {
+		searchButton.click();
+		return new ManxSearchResultsPage(driver);
+	}
 	
 	public FishProductListPage clickSideBarFishLink() {
 		sideBarFishLink.click();
@@ -86,7 +90,7 @@ public class HomePage {
 		return new CatsProductListPage(driver);
 	}
 	
-	public boolean myAccountButtonExists() {
+	public boolean myAccountLinkExists() {
 		return myAccountLink.size() > 0;
 	}	
 }

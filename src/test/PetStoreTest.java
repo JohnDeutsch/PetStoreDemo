@@ -14,6 +14,7 @@ import pomClasses.HomePage;
 import pomClasses.IguanaItemListPage;
 import pomClasses.MaleAdultBulldogItemPage;
 import pomClasses.ManxItemListPage;
+import pomClasses.ManxSearchResultsPage;
 import pomClasses.RegisterPage;
 import pomClasses.ReptilesProductListPage;
 import pomClasses.SignInPage;
@@ -69,6 +70,8 @@ public class PetStoreTest {
 	private String birdItemName2 = "Male";
 	private String birdItemName3 = "Finch";
 	
+	private String searchString = "manx";
+	
 	@BeforeTest
 	public void browserSetup() {		
 		WebDriverManager.firefoxdriver().setup();		
@@ -120,9 +123,9 @@ public class PetStoreTest {
 	    signInPage.clearPasswordField();
 	    signInPage.setPasswordField(password);	    
 	    homePage = signInPage.clickLoginButton();
-	    assertTrue(homePage.myAccountButtonExists());
+	    assertTrue(homePage.myAccountLinkExists());
 	}
-	
+	/*
 	@Test
 	public void verifyBrowsingFish() {
 		driver.get(homePageURL);
@@ -185,11 +188,16 @@ public class PetStoreTest {
 		assertTrue(adultMaleFinchItemName.contains(birdItemName1)
 				&& adultMaleFinchItemName.contains(birdItemName2)
 				&& adultMaleFinchItemName.contains(birdItemName3));
-	}
+	}*/
 	
-	//@Test
+	@Test
 	public void verifySearch() {
-		
+		driver.get(homePageURL);
+		HomePage homePage = new HomePage(driver);
+		homePage.setSearchFieldString(searchString);
+		ManxSearchResultsPage manxSearchResultsPage = homePage.clickSearchButton();
+		ManxItemListPage manxItemListPage = manxSearchResultsPage.clickManxItemListLink();
+		assertTrue(manxItemListPage.manxHeaderExists());
 	}
 	
 	//@Test

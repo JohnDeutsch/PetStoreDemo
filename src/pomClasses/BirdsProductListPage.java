@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BirdsProductListPage {
+	
 	private WebDriver driver;
 	
 	@FindBy(xpath = "//a[text()='AV-SB-02']")
