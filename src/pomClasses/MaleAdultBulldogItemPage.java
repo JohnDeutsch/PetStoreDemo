@@ -13,18 +13,25 @@ public class MaleAdultBulldogItemPage {
 	private WebElement itemName;
 	@FindBy(xpath = "//div[@id='LogoContent']//a")
 	private WebElement homePageLink;
+	@FindBy(xpath = "//a[text()='Add to Cart']")
+	private WebElement addToCartButton;
 	
 	public MaleAdultBulldogItemPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
 	
-	public String getItemNameText() {
+	public String getItemNameString() {
 		return itemName.getText();
 	}
 	
 	public HomePage clickHomePageLink() {
 		homePageLink.click();
 		return new HomePage(driver);
+	}
+	
+	public ShoppingCartPage clickAddToCartButton() {
+		addToCartButton.click();
+		return new ShoppingCartPage(driver);
 	}
 }

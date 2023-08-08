@@ -17,6 +17,7 @@ import pomClasses.ManxItemListPage;
 import pomClasses.ManxSearchResultsPage;
 import pomClasses.RegisterPage;
 import pomClasses.ReptilesProductListPage;
+import pomClasses.ShoppingCartPage;
 import pomClasses.SignInPage;
 import pomClasses.TaillessManxItemPage;
 import pomClasses.TigerSharkItemListPage;
@@ -72,6 +73,9 @@ public class PetStoreTest {
 	
 	private String searchString = "manx";
 	
+	private String toothlessTigerSharkProductID = "FI-SW-02";
+	private String maleAdultBulldogProductID = "K9-BD-01";
+	
 	@BeforeTest
 	public void browserSetup() {		
 		WebDriverManager.firefoxdriver().setup();		
@@ -125,8 +129,8 @@ public class PetStoreTest {
 	    homePage = signInPage.clickLoginButton();
 	    assertTrue(homePage.myAccountLinkExists());
 	}
-	/*
-	@Test
+	
+	/*@Test
 	public void verifyBrowsingFish() {
 		driver.get(homePageURL);
 		HomePage homePage = new HomePage(driver);
@@ -188,7 +192,7 @@ public class PetStoreTest {
 		assertTrue(adultMaleFinchItemName.contains(birdItemName1)
 				&& adultMaleFinchItemName.contains(birdItemName2)
 				&& adultMaleFinchItemName.contains(birdItemName3));
-	}*/
+	}
 	
 	@Test
 	public void verifySearch() {
@@ -198,13 +202,30 @@ public class PetStoreTest {
 		ManxSearchResultsPage manxSearchResultsPage = homePage.clickSearchButton();
 		ManxItemListPage manxItemListPage = manxSearchResultsPage.clickManxItemListLink();
 		assertTrue(manxItemListPage.manxHeaderExists());
-	}
+	}*/
 	
-	//@Test
+	@Test
 	public void verifyAddAndRemove() {
+		driver.get(homePageURL);
+		HomePage homePage = new HomePage(driver);
+		
 		// add to cart through item list page
+		FishProductListPage fishProductListPage = homePage.clickSideBarFishLink();
+		TigerSharkItemListPage tigerSharkItemListPage = fishProductListPage.clickTigerSharkItemLink();
+		ShoppingCartPage shoppingCartPage = tigerSharkItemListPage.clickAddToCartButton();
+		assertTrue(toothlessTigerSharkProductID.compareTo(shoppingCartPage.getToothlessTigerSharkProductIDString()) == 0);
+			
 		// add to cart through item page
+		DogsProductListPage dogsProductListPage = shoppingCartPage.clickTopBarDogLink();
+		BulldogItemListPage bulldogItemListPage = dogsProductListPage.clickBulldogItemListLink();
+		MaleAdultBulldogItemPage maleAdultBulldogItemPage = bulldogItemListPage.clickMaleAdultBulldogItemLink();
+		shoppingCartPage = maleAdultBulldogItemPage.clickAddToCartButton();
+		assertTrue(maleAdultBulldogProductID.compareTo(shoppingCartPage.getMaleAdultBulldogProductIDString()) == 0);
+		
 		// remove items in cart
+		shoppingCartPage = shoppingCartPage.clickToothlessTigerSharkRemoveButton();
+		shoppingCartPage = shoppingCartPage.clickMaleAdultBulldogRemoveButton();
+		assertTrue(shoppingCartPage.emptyCartMessageExists());
 	}
 	
 	//@Test
