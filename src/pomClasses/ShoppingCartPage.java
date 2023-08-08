@@ -23,6 +23,12 @@ public class ShoppingCartPage {
 	private WebElement maleAdultBulldogRemoveButton;
 	@FindBy(xpath = "//b[text()='Your cart is empty.']")
 	private List<WebElement> emptyCartMessage;
+	@FindBy(xpath = "//input[@name='EST-13']")
+	private WebElement greenAdultIguanaQuantityInputField;
+	@FindBy(name = "updateCartQuantities")
+	private WebElement updateCartButton;
+	@FindBy(xpath = "//input[@name='updateCartQuantities']//ancestor::td")
+	private WebElement subTotalElement;
 	
 	public ShoppingCartPage(WebDriver driver) {
 		this.driver = driver;
@@ -54,5 +60,19 @@ public class ShoppingCartPage {
 	
 	public boolean emptyCartMessageExists() {
 		return emptyCartMessage.size() > 0;
+	}
+	
+	public void setGreenAdultIguanaQuantityInputField(String quantity) {
+		greenAdultIguanaQuantityInputField.clear();
+		greenAdultIguanaQuantityInputField.sendKeys(quantity);
+	}
+	
+	public ShoppingCartPage clickUpdateCartButton() {
+		updateCartButton.click();
+		return new ShoppingCartPage(driver);
+	}
+	
+	public String getSubTotalElementString() {
+		return subTotalElement.getText();
 	}
 }

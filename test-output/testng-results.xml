@@ -2,20 +2,20 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-08-08T13:13:53 CDT" name="Suite" finished-at="2023-08-08T13:13:59 CDT" duration-ms="6012">
+  <suite started-at="2023-08-08T14:02:17 CDT" name="Suite" finished-at="2023-08-08T14:02:28 CDT" duration-ms="11134">
     <groups>
     </groups>
-    <test started-at="2023-08-08T13:13:53 CDT" name="Test" finished-at="2023-08-08T13:13:59 CDT" duration-ms="6012">
+    <test started-at="2023-08-08T14:02:17 CDT" name="Test" finished-at="2023-08-08T14:02:28 CDT" duration-ms="11134">
       <class name="test.PetStoreTest">
-        <test-method is-config="true" signature="browserSetup()[pri:0, instance:test.PetStoreTest@1e178745]" started-at="2023-08-08T13:13:53 CDT" name="browserSetup" finished-at="2023-08-08T13:13:56 CDT" duration-ms="2631" status="PASS">
+        <test-method is-config="true" signature="browserSetup()[pri:0, instance:test.PetStoreTest@1e178745]" started-at="2023-08-08T14:02:17 CDT" name="browserSetup" finished-at="2023-08-08T14:02:20 CDT" duration-ms="2685" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- browserSetup -->
-        <test-method signature="verifyAddAndRemove()[pri:0, instance:test.PetStoreTest@1e178745]" started-at="2023-08-08T13:13:56 CDT" name="verifyAddAndRemove" finished-at="2023-08-08T13:13:59 CDT" duration-ms="2584" status="PASS">
+        <test-method signature="verifyItemQuantityUpdate()[pri:0, instance:test.PetStoreTest@1e178745]" started-at="2023-08-08T14:02:20 CDT" name="verifyItemQuantityUpdate" finished-at="2023-08-08T14:02:28 CDT" duration-ms="7595" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyAddAndRemove -->
-        <test-method is-config="true" signature="cleanup()[pri:0, instance:test.PetStoreTest@1e178745]" started-at="2023-08-08T13:13:59 CDT" name="cleanup" finished-at="2023-08-08T13:13:59 CDT" duration-ms="771" status="PASS">
+        </test-method> <!-- verifyItemQuantityUpdate -->
+        <test-method is-config="true" signature="cleanup()[pri:0, instance:test.PetStoreTest@1e178745]" started-at="2023-08-08T14:02:28 CDT" name="cleanup" finished-at="2023-08-08T14:02:28 CDT" duration-ms="828" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- cleanup -->

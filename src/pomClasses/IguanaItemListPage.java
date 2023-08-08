@@ -11,6 +11,8 @@ public class IguanaItemListPage {
 	
 	@FindBy(xpath = "//a[text()='EST-13']")
 	private WebElement greenAdultIguanaItemLink;
+	@FindBy(xpath = "//a[text()='Add to Cart']")
+	private WebElement addToCartButton;
 	
 	public IguanaItemListPage(WebDriver driver) {
 		this.driver = driver;
@@ -20,5 +22,10 @@ public class IguanaItemListPage {
 	public GreenAdultIguanaItemPage clickGreenAdultIguanaItemLink() {
 		greenAdultIguanaItemLink.click();
 		return new GreenAdultIguanaItemPage(driver);
+	}
+	
+	public ShoppingCartPage clickAddToCartButton() {
+		addToCartButton.click();
+		return new ShoppingCartPage(driver);
 	}
 }

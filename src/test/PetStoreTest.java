@@ -76,6 +76,9 @@ public class PetStoreTest {
 	private String toothlessTigerSharkProductID = "FI-SW-02";
 	private String maleAdultBulldogProductID = "K9-BD-01";
 	
+	private String greenAdultIguanaQuantity = "2";
+	private String cartSubTotal = "$37.00";
+	
 	@BeforeTest
 	public void browserSetup() {		
 		WebDriverManager.firefoxdriver().setup();		
@@ -204,7 +207,7 @@ public class PetStoreTest {
 		assertTrue(manxItemListPage.manxHeaderExists());
 	}*/
 	
-	@Test
+	//@Test
 	public void verifyAddAndRemove() {
 		driver.get(homePageURL);
 		HomePage homePage = new HomePage(driver);
@@ -228,9 +231,16 @@ public class PetStoreTest {
 		assertTrue(shoppingCartPage.emptyCartMessageExists());
 	}
 	
-	//@Test
+	@Test
 	public void verifyItemQuantityUpdate() {
-		
+		driver.get(homePageURL);
+		HomePage homePage = new HomePage(driver);
+		ReptilesProductListPage reptilesProductListPage = homePage.clickReptileImageLink();
+		IguanaItemListPage iguanaItemListPage = reptilesProductListPage.clickIguanaItemListLink();
+		ShoppingCartPage shoppingCartPage = iguanaItemListPage.clickAddToCartButton();
+		shoppingCartPage.setGreenAdultIguanaQuantityInputField(greenAdultIguanaQuantity);
+		shoppingCartPage.clickUpdateCartButton();
+		assertTrue(shoppingCartPage.getSubTotalElementString().contains(cartSubTotal));
 	}
 	
 	//@Test (dependsOnMethods = { "verifySignup" })
