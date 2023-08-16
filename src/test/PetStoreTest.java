@@ -15,6 +15,9 @@ import pomClasses.IguanaItemListPage;
 import pomClasses.MaleAdultBulldogItemPage;
 import pomClasses.ManxItemListPage;
 import pomClasses.ManxSearchResultsPage;
+import pomClasses.NewOrderFormPage;
+import pomClasses.OrderConfirmPage;
+import pomClasses.OrderSubmittedPage;
 import pomClasses.RegisterPage;
 import pomClasses.ReptilesProductListPage;
 import pomClasses.ShoppingCartPage;
@@ -79,6 +82,16 @@ public class PetStoreTest {
 	private String greenAdultIguanaQuantity = "2";
 	private String cartSubTotal = "$37.00";
 	
+	private String cardType = "Visa";
+	private String cardNumber = "999 9999 9999 9999";
+	private String expiryDate = "12/03";
+	private String itemID = "EST-19";
+	private String description = "Adult Male Finch";
+	private String quantity = "1";
+	private String price = "$15.50";
+	private String totalCost = "$15.50";
+	private String total = "Total: $15.50";
+	
 	@BeforeTest
 	public void browserSetup() {		
 		WebDriverManager.firefoxdriver().setup();		
@@ -86,7 +99,7 @@ public class PetStoreTest {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 	}
 	
-	//@BeforeTest
+	@BeforeTest
 	public void generateUsername() {
 		// generate a random alphanumeric username
 				int leftLimit = 48; // numeral '0'
@@ -100,9 +113,7 @@ public class PetStoreTest {
 			    	      .toString();
 	}
 	
-	// this test needs to run first since other tests are dependent on the account being created
-	// the syntax is @Test (dependsOnMethods = { "verifySignup" })
-	//@Test	
+	@Test 
 	public void verifySignup() {
 		// create account on register page
 		driver.get(homePageURL);
@@ -131,9 +142,12 @@ public class PetStoreTest {
 	    signInPage.setPasswordField(password);	    
 	    homePage = signInPage.clickLoginButton();
 	    assertTrue(homePage.myAccountLinkExists());
+	    
+	    // sign out
+	    homePage.clickSignOutButton();
 	}
 	
-	/*@Test
+	@Test
 	public void verifyBrowsingFish() {
 		driver.get(homePageURL);
 		HomePage homePage = new HomePage(driver);
@@ -153,7 +167,7 @@ public class PetStoreTest {
 		DogsProductListPage dogsProductListPage = homePage.clickTopBarDogLink();
 		BulldogItemListPage bulldogItemListPage = dogsProductListPage.clickBulldogItemListLink();
 		MaleAdultBulldogItemPage maleAdultBulldogItemPage = bulldogItemListPage.clickMaleAdultBulldogItemLink();
-		String maleAdultBulldogItemName = maleAdultBulldogItemPage.getItemNameText();
+		String maleAdultBulldogItemName = maleAdultBulldogItemPage.getItemNameString();
 		assertTrue(maleAdultBulldogItemName.contains(dogItemName1)
 				&& maleAdultBulldogItemName.contains(dogItemName2)
 				&& maleAdultBulldogItemName.contains(dogItemName3));
@@ -205,9 +219,9 @@ public class PetStoreTest {
 		ManxSearchResultsPage manxSearchResultsPage = homePage.clickSearchButton();
 		ManxItemListPage manxItemListPage = manxSearchResultsPage.clickManxItemListLink();
 		assertTrue(manxItemListPage.manxHeaderExists());
-	}*/
+	}
 	
-	//@Test
+	@Test 
 	public void verifyAddAndRemove() {
 		driver.get(homePageURL);
 		HomePage homePage = new HomePage(driver);
@@ -231,7 +245,7 @@ public class PetStoreTest {
 		assertTrue(shoppingCartPage.emptyCartMessageExists());
 	}
 	
-	@Test
+	@Test 
 	public void verifyItemQuantityUpdate() {
 		driver.get(homePageURL);
 		HomePage homePage = new HomePage(driver);
@@ -241,11 +255,75 @@ public class PetStoreTest {
 		shoppingCartPage.setGreenAdultIguanaQuantityInputField(greenAdultIguanaQuantity);
 		shoppingCartPage.clickUpdateCartButton();
 		assertTrue(shoppingCartPage.getSubTotalElementString().contains(cartSubTotal));
+		
+		// empty the cart
+		shoppingCartPage.clickRemoveFirstRowButton();
 	}
 	
-	//@Test (dependsOnMethods = { "verifySignup" })
+	@Test (dependsOnMethods = { "verifySignup" })
 	public void verifyOrder() {
+		// must sign in to go to checkout
+		driver.get(homePageURL);
+		HomePage homePage = new HomePage(driver);
+		SignInPage signInPage = homePage.clickSignInButton();
+		//signInPage.setUsernameField("bbbnnnmmm9");
+		signInPage.setUsernameField(generatedUsername);
+		signInPage.clearPasswordField();
+		signInPage.setPasswordField(password);
+		homePage = signInPage.clickLoginButton();
 		
+		// check values in the order confirmation page
+		BirdsProductListPage birdsProductListPage = homePage.clickBirdImageLink();
+		FinchItemListPage finchItemListPage = birdsProductListPage.clickFinchItemListLink();
+		ShoppingCartPage shoppingCartPage = finchItemListPage.clickAddToCartButton();
+		NewOrderFormPage newOrderFormPage = shoppingCartPage.clickProceedToCheckoutButton();
+		OrderConfirmPage orderConfirmPage = newOrderFormPage.clickContinueButton();
+
+		assertTrue(orderConfirmPage.getFirstNameBillingString().compareToIgnoreCase(firstName) == 0);
+		assertTrue(orderConfirmPage.getLastNameBillingString().compareToIgnoreCase(lastName) == 0);
+		assertTrue(orderConfirmPage.getAddress1BillingString().compareToIgnoreCase(address1) == 0);
+		assertTrue(orderConfirmPage.getAddress2BillingString().compareToIgnoreCase(address2) == 0);
+		assertTrue(orderConfirmPage.getCityBillingString().compareToIgnoreCase(city) == 0);
+		assertTrue(orderConfirmPage.getStateBillingString().compareToIgnoreCase(state) == 0);
+		assertTrue(orderConfirmPage.getZipBillingString().compareToIgnoreCase(zipCode) == 0);
+		assertTrue(orderConfirmPage.getCountryBillingString().compareToIgnoreCase(country) == 0);
+		assertTrue(orderConfirmPage.getFirstNameShippingString().compareToIgnoreCase(firstName) == 0);
+		assertTrue(orderConfirmPage.getLastNameShippingString().compareToIgnoreCase(lastName) == 0);
+		assertTrue(orderConfirmPage.getAddress1ShippingString().compareToIgnoreCase(address1) == 0);
+		assertTrue(orderConfirmPage.getAddress2ShippingString().compareToIgnoreCase(address2) == 0);
+		assertTrue(orderConfirmPage.getCityShippingString().compareToIgnoreCase(city) == 0);
+		assertTrue(orderConfirmPage.getStateShippingString().compareToIgnoreCase(state) == 0);
+		assertTrue(orderConfirmPage.getZipShippingString().compareToIgnoreCase(zipCode) == 0);
+		assertTrue(orderConfirmPage.getCountryShippingString().compareToIgnoreCase(country) == 0);
+				
+		OrderSubmittedPage orderSubmittedPage = orderConfirmPage.clickConfirmButton();
+				
+		// check values in the order submitted page
+		assertTrue(orderSubmittedPage.getFirstNameBillingString().compareToIgnoreCase(firstName) == 0);
+		assertTrue(orderSubmittedPage.getLastNameBillingString().compareToIgnoreCase(lastName) == 0);
+		assertTrue(orderSubmittedPage.getAddress1BillingString().compareToIgnoreCase(address1) == 0);
+		assertTrue(orderSubmittedPage.getAddress2BillingString().compareToIgnoreCase(address2) == 0);
+		assertTrue(orderSubmittedPage.getCityBillingString().compareToIgnoreCase(city) == 0);
+		assertTrue(orderSubmittedPage.getStateBillingString().compareToIgnoreCase(state) == 0);
+		assertTrue(orderSubmittedPage.getZipBillingString().compareToIgnoreCase(zipCode) == 0);
+		assertTrue(orderSubmittedPage.getCountryBillingString().compareToIgnoreCase(country) == 0);
+		assertTrue(orderSubmittedPage.getFirstNameShippingString().compareToIgnoreCase(firstName) == 0);
+		assertTrue(orderSubmittedPage.getLastNameShippingString().compareToIgnoreCase(lastName) == 0);
+		assertTrue(orderSubmittedPage.getAddress1ShippingString().compareToIgnoreCase(address1) == 0);
+		assertTrue(orderSubmittedPage.getAddress2ShippingString().compareToIgnoreCase(address2) == 0);
+		assertTrue(orderSubmittedPage.getCityShippingString().compareToIgnoreCase(city) == 0);
+		assertTrue(orderSubmittedPage.getStateShippingString().compareToIgnoreCase(state) == 0);
+		assertTrue(orderSubmittedPage.getZipShippingString().compareToIgnoreCase(zipCode) == 0);
+		assertTrue(orderSubmittedPage.getCountryShippingString().compareToIgnoreCase(country) == 0);
+		assertTrue(orderSubmittedPage.getItemIDString().compareToIgnoreCase(itemID) == 0);
+		assertTrue(Utility.stringCompareRemoveAllWhiteSpaces(orderSubmittedPage.getDescriptionString(), description));
+		assertTrue(orderSubmittedPage.getQuantityString().compareTo(quantity) == 0);
+		assertTrue(orderSubmittedPage.getPriceString().compareTo(price) == 0);
+		assertTrue(orderSubmittedPage.getTotalCostString().compareTo(totalCost) == 0);
+		assertTrue(orderSubmittedPage.getTotalString().compareTo(total) == 0);
+		
+		// sign out
+		orderSubmittedPage.clickSignoutButton();
 	}
 
 	@AfterTest

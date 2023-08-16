@@ -31,6 +31,8 @@ public class HomePage {
 	private WebElement birdImageLink;
 	@FindBy(xpath = "//a[text()='My Account']")
 	private List<WebElement> myAccountLink;	
+	@FindBy(xpath = "//a[text()='Sign Out']")
+	private WebElement signOutButton;
 	
 	Actions builder;
 	
@@ -93,4 +95,9 @@ public class HomePage {
 	public boolean myAccountLinkExists() {
 		return myAccountLink.size() > 0;
 	}	
+	
+	public HomePage clickSignOutButton() {
+		signOutButton.click();
+		return new HomePage(driver);
+	}
 }

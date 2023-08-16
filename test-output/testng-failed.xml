@@ -7,7 +7,9 @@
         <methods>
           <include name="browserSetup"/>
           <include name="cleanup"/>
-          <include name="verifyBrowsingBirds"/>
+          <include name="generateUsername"/>
+          <include name="verifySignup"/>
+          <include name="verifyOrder"/>
         </methods>
       </class> <!-- test.PetStoreTest -->
     </classes>

@@ -29,6 +29,10 @@ public class ShoppingCartPage {
 	private WebElement updateCartButton;
 	@FindBy(xpath = "//input[@name='updateCartQuantities']//ancestor::td")
 	private WebElement subTotalElement;
+	@FindBy(xpath = "//a[text()='Proceed to Checkout']")
+	private WebElement proceedToCheckoutButton;
+	@FindBy(xpath = "//a[text()='Remove']")
+	private WebElement removeFirstRowButton;
 	
 	public ShoppingCartPage(WebDriver driver) {
 		this.driver = driver;
@@ -74,5 +78,15 @@ public class ShoppingCartPage {
 	
 	public String getSubTotalElementString() {
 		return subTotalElement.getText();
+	}
+	
+	public NewOrderFormPage clickProceedToCheckoutButton() {
+		proceedToCheckoutButton.click();
+		return new NewOrderFormPage(driver);
+	}
+	
+	public ShoppingCartPage clickRemoveFirstRowButton() {
+		removeFirstRowButton.click();
+		return new ShoppingCartPage(driver);
 	}
 }

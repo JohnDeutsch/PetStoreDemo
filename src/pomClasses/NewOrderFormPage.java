@@ -5,20 +5,20 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class AdultMaleFinchItemPage {
+public class NewOrderFormPage {
 
 	private WebDriver driver;
 	
-	@FindBy(tagName = "font")
-	private WebElement itemName;
+	@FindBy(name = "newOrder")
+	private WebElement continueButton;
 	
-	
-	public AdultMaleFinchItemPage(WebDriver driver) {
+	public NewOrderFormPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
 	
-	public String getItemNameText() {
-		return itemName.getText();
+	public OrderConfirmPage clickContinueButton() {
+		continueButton.click();
+		return new OrderConfirmPage(driver);
 	}
 }

@@ -1,25 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="10" passed="10" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-08-08T14:02:17 CDT" name="Suite" finished-at="2023-08-08T14:02:28 CDT" duration-ms="11134">
+  <suite started-at="2023-08-16T10:34:05 CDT" name="Default suite" finished-at="2023-08-16T10:34:44 CDT" duration-ms="38780">
     <groups>
     </groups>
-    <test started-at="2023-08-08T14:02:17 CDT" name="Test" finished-at="2023-08-08T14:02:28 CDT" duration-ms="11134">
+    <test started-at="2023-08-16T10:34:05 CDT" name="Default test" finished-at="2023-08-16T10:34:44 CDT" duration-ms="38780">
       <class name="test.PetStoreTest">
-        <test-method is-config="true" signature="browserSetup()[pri:0, instance:test.PetStoreTest@1e178745]" started-at="2023-08-08T14:02:17 CDT" name="browserSetup" finished-at="2023-08-08T14:02:20 CDT" duration-ms="2685" status="PASS">
+        <test-method is-config="true" signature="browserSetup()[pri:0, instance:test.PetStoreTest@757277dc]" started-at="2023-08-16T10:34:05 CDT" name="browserSetup" finished-at="2023-08-16T10:34:08 CDT" duration-ms="2422" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- browserSetup -->
-        <test-method signature="verifyItemQuantityUpdate()[pri:0, instance:test.PetStoreTest@1e178745]" started-at="2023-08-08T14:02:20 CDT" name="verifyItemQuantityUpdate" finished-at="2023-08-08T14:02:28 CDT" duration-ms="7595" status="PASS">
+        <test-method is-config="true" signature="generateUsername()[pri:0, instance:test.PetStoreTest@757277dc]" started-at="2023-08-16T10:34:08 CDT" name="generateUsername" finished-at="2023-08-16T10:34:08 CDT" duration-ms="2" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- generateUsername -->
+        <test-method signature="verifyBrowsingCats()[pri:0, instance:test.PetStoreTest@757277dc]" started-at="2023-08-16T10:34:08 CDT" name="verifyBrowsingCats" finished-at="2023-08-16T10:34:09 CDT" duration-ms="1478" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyBrowsingCats -->
+        <test-method signature="verifyBrowsingFish()[pri:0, instance:test.PetStoreTest@757277dc]" started-at="2023-08-16T10:34:09 CDT" name="verifyBrowsingFish" finished-at="2023-08-16T10:34:10 CDT" duration-ms="881" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyBrowsingFish -->
+        <test-method signature="verifyBrowsingReptiles()[pri:0, instance:test.PetStoreTest@757277dc]" started-at="2023-08-16T10:34:10 CDT" name="verifyBrowsingReptiles" finished-at="2023-08-16T10:34:17 CDT" duration-ms="6725" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyBrowsingReptiles -->
+        <test-method signature="verifyItemQuantityUpdate()[pri:0, instance:test.PetStoreTest@757277dc]" started-at="2023-08-16T10:34:17 CDT" name="verifyItemQuantityUpdate" finished-at="2023-08-16T10:34:24 CDT" duration-ms="6802" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyItemQuantityUpdate -->
-        <test-method is-config="true" signature="cleanup()[pri:0, instance:test.PetStoreTest@1e178745]" started-at="2023-08-08T14:02:28 CDT" name="cleanup" finished-at="2023-08-08T14:02:28 CDT" duration-ms="828" status="PASS">
+        <test-method signature="verifySearch()[pri:0, instance:test.PetStoreTest@757277dc]" started-at="2023-08-16T10:34:24 CDT" name="verifySearch" finished-at="2023-08-16T10:34:24 CDT" duration-ms="510" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifySearch -->
+        <test-method signature="verifySignup()[pri:0, instance:test.PetStoreTest@757277dc]" started-at="2023-08-16T10:34:24 CDT" name="verifySignup" finished-at="2023-08-16T10:34:26 CDT" duration-ms="1766" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifySignup -->
+        <test-method signature="verifyAddAndRemove()[pri:0, instance:test.PetStoreTest@757277dc]" started-at="2023-08-16T10:34:26 CDT" name="verifyAddAndRemove" finished-at="2023-08-16T10:34:28 CDT" duration-ms="1971" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyAddAndRemove -->
+        <test-method signature="verifyBrowsingBirds()[pri:0, instance:test.PetStoreTest@757277dc]" started-at="2023-08-16T10:34:28 CDT" name="verifyBrowsingBirds" finished-at="2023-08-16T10:34:34 CDT" duration-ms="6426" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyBrowsingBirds -->
+        <test-method signature="verifyBrowsingDogs()[pri:0, instance:test.PetStoreTest@757277dc]" started-at="2023-08-16T10:34:34 CDT" name="verifyBrowsingDogs" finished-at="2023-08-16T10:34:35 CDT" duration-ms="728" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyBrowsingDogs -->
+        <test-method signature="verifyOrder()[pri:0, instance:test.PetStoreTest@757277dc]" started-at="2023-08-16T10:34:35 CDT" name="verifyOrder" finished-at="2023-08-16T10:34:43 CDT" depends-on-methods="test.PetStoreTest.verifySignup" duration-ms="7705" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- verifyOrder -->
+        <test-method is-config="true" signature="cleanup()[pri:0, instance:test.PetStoreTest@757277dc]" started-at="2023-08-16T10:34:43 CDT" name="cleanup" finished-at="2023-08-16T10:34:44 CDT" duration-ms="1323" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- cleanup -->
       </class> <!-- test.PetStoreTest -->
-    </test> <!-- Test -->
-  </suite> <!-- Suite -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
 </testng-results>

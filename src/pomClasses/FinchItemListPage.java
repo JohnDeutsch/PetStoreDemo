@@ -10,6 +10,8 @@ public class FinchItemListPage {
 	
 	@FindBy(xpath = "//a[text()='EST-19']")
 	private WebElement adultMaleFinchItemLink;
+	@FindBy(xpath = "//a[text()='Add to Cart']")
+	private WebElement addToCartButton;
 	
 	public FinchItemListPage(WebDriver driver) {
 		this.driver = driver;
@@ -21,4 +23,8 @@ public class FinchItemListPage {
 		return new AdultMaleFinchItemPage(driver);
 	}
 
+	public ShoppingCartPage clickAddToCartButton() {
+		addToCartButton.click();
+		return new ShoppingCartPage(driver);
+	}
 }
