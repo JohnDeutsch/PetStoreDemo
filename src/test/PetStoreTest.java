@@ -58,21 +58,11 @@ public class PetStoreTest {
 	private String zipCode = "12345";
 	private String country = "United States";
 	
-	// item names are split up by words in order to help ignore weird extra spaces and /n's in the html code
-	private String fishItemName1 = "Toothless";
-	private String fishItemName2 = "Tiger";
-	private String fishItemName3 = "Shark";
-	private String dogItemName1 = "Male"; 
-	private String dogItemName2 = "Adult";
-	private String dogItemName3 = "Bulldog";
-	private String catItemName1 = "Tailless";
-	private String catItemName2 = "Manx";
-	private String reptileItemName1 = "Green";
-	private String reptileItemName2 = "Adult";
-	private String reptileItemName3 = "Iguana";	 
-	private String birdItemName1 = "Adult";
-	private String birdItemName2 = "Male";
-	private String birdItemName3 = "Finch";
+	private String fishItemName = "Toothless Tiger Shark";
+	private String dogItemName = "Male Adult Bulldog"; 
+	private String catItemName = "Tailless Manx";
+	private String reptileItemName = "Green Adult Iguana";
+	private String birdItemName = "Adult Male Finch";
 	
 	private String searchString = "manx";
 	
@@ -154,10 +144,7 @@ public class PetStoreTest {
 		FishProductListPage fishProductListPage = homePage.clickSideBarFishLink();
 		TigerSharkItemListPage tigerSharkItemListPage = fishProductListPage.clickTigerSharkItemLink();
 		ToothlessTigerSharkItemPage toothlessTigerSharkItemPage = tigerSharkItemListPage.clickToothlessTigerSharkItemLink();
-		String toothlessTigerSharkItemName = toothlessTigerSharkItemPage.getItemNameText();
-		assertTrue(toothlessTigerSharkItemName.contains(fishItemName1)
-				&& toothlessTigerSharkItemName.contains(fishItemName2)
-				&& toothlessTigerSharkItemName.contains(fishItemName3));	
+		assertTrue(Utility.stringCompareRemoveAllWhiteSpaces(toothlessTigerSharkItemPage.getItemNameText(), fishItemName));	
 	}
 	
 	@Test
@@ -167,10 +154,7 @@ public class PetStoreTest {
 		DogsProductListPage dogsProductListPage = homePage.clickTopBarDogLink();
 		BulldogItemListPage bulldogItemListPage = dogsProductListPage.clickBulldogItemListLink();
 		MaleAdultBulldogItemPage maleAdultBulldogItemPage = bulldogItemListPage.clickMaleAdultBulldogItemLink();
-		String maleAdultBulldogItemName = maleAdultBulldogItemPage.getItemNameString();
-		assertTrue(maleAdultBulldogItemName.contains(dogItemName1)
-				&& maleAdultBulldogItemName.contains(dogItemName2)
-				&& maleAdultBulldogItemName.contains(dogItemName3));
+		assertTrue(Utility.stringCompareRemoveAllWhiteSpaces(maleAdultBulldogItemPage.getItemNameText(), dogItemName));
 	}
 	
 	@Test
@@ -180,9 +164,7 @@ public class PetStoreTest {
 		CatsProductListPage catsProductListPage = homePage.clickTopBarCatLink();
 		ManxItemListPage manxItemListPage = catsProductListPage.clickManxItemListLink();
 		TaillessManxItemPage taillessManxItemPage = manxItemListPage.clickTaillessManxItemLink();
-		String taillessManxItemName = taillessManxItemPage.getItemNameText();
-		assertTrue(taillessManxItemName.contains(catItemName1)
-				&& taillessManxItemName.contains(catItemName2));
+		assertTrue(Utility.stringCompareRemoveAllWhiteSpaces(taillessManxItemPage.getItemNameText(), catItemName));
 	}
 	
 	@Test
@@ -192,10 +174,7 @@ public class PetStoreTest {
 		ReptilesProductListPage reptilesProductListPage = homePage.clickReptileImageLink();
 		IguanaItemListPage iguanaItemListPage = reptilesProductListPage.clickIguanaItemListLink();
 		GreenAdultIguanaItemPage greenAdultIguanaItemPage = iguanaItemListPage.clickGreenAdultIguanaItemLink();
-		String greenAdultIguanaItemName = greenAdultIguanaItemPage.getItemNameText();
-		assertTrue(greenAdultIguanaItemName.contains(reptileItemName1)
-				&& greenAdultIguanaItemName.contains(reptileItemName2)
-				&& greenAdultIguanaItemName.contains(reptileItemName3));
+		assertTrue(Utility.stringCompareRemoveAllWhiteSpaces(greenAdultIguanaItemPage.getItemNameText(), reptileItemName));
 	}
 	
 	@Test
@@ -205,10 +184,7 @@ public class PetStoreTest {
 		BirdsProductListPage birdsProductListPage = homePage.clickBirdImageLink();
 		FinchItemListPage finchItemListPage = birdsProductListPage.clickFinchItemListLink();
 		AdultMaleFinchItemPage adultMaleFinchItemPage = finchItemListPage.clickAdultMaleFinchItemLink();
-		String adultMaleFinchItemName = adultMaleFinchItemPage.getItemNameText();
-		assertTrue(adultMaleFinchItemName.contains(birdItemName1)
-				&& adultMaleFinchItemName.contains(birdItemName2)
-				&& adultMaleFinchItemName.contains(birdItemName3));
+		assertTrue(Utility.stringCompareRemoveAllWhiteSpaces(adultMaleFinchItemPage.getItemNameText(), birdItemName));
 	}
 	
 	@Test
@@ -266,7 +242,6 @@ public class PetStoreTest {
 		driver.get(homePageURL);
 		HomePage homePage = new HomePage(driver);
 		SignInPage signInPage = homePage.clickSignInButton();
-		//signInPage.setUsernameField("bbbnnnmmm9");
 		signInPage.setUsernameField(generatedUsername);
 		signInPage.clearPasswordField();
 		signInPage.setPasswordField(password);
@@ -299,6 +274,9 @@ public class PetStoreTest {
 		OrderSubmittedPage orderSubmittedPage = orderConfirmPage.clickConfirmButton();
 				
 		// check values in the order submitted page
+		assertTrue(orderSubmittedPage.getCardTypeString().compareToIgnoreCase(cardType) == 0);
+		assertTrue(orderSubmittedPage.getCardNumberString().contains(cardNumber));
+		assertTrue(orderSubmittedPage.getExpiryDateString().compareTo(expiryDate) == 0);
 		assertTrue(orderSubmittedPage.getFirstNameBillingString().compareToIgnoreCase(firstName) == 0);
 		assertTrue(orderSubmittedPage.getLastNameBillingString().compareToIgnoreCase(lastName) == 0);
 		assertTrue(orderSubmittedPage.getAddress1BillingString().compareToIgnoreCase(address1) == 0);

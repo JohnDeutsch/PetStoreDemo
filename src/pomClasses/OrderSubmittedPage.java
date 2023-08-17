@@ -5,8 +5,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import test.Utility;
-
 public class OrderSubmittedPage {
 
 	WebDriver driver;
@@ -171,60 +169,6 @@ public class OrderSubmittedPage {
 	
 	public String getTotalString() {
 		return total.getText();
-	}
-	
-	public boolean checkAllFields(
-			String cardType,
-			String cardNumber,
-			String expiryDate,
-			String firstNameBilling, 
-			String lastNameBilling,
-			String address1Billing,
-			String address2Billing,
-			String cityBilling,
-			String stateBilling,
-			String zipBilling,
-			String countryBilling,
-			String firstNameShipping,
-			String lastNameShipping,
-			String address1Shipping,
-			String address2Shipping,
-			String cityShipping,
-			String stateShipping,
-			String zipShipping,
-			String countryShipping,
-			String itemID,
-			String description,
-			String quantity,
-			String price,
-			String totalCost,
-			String total) {
-		// @TODO: add logic for parsing description string and comparing it to passed string
-		return getCardTypeString().compareToIgnoreCase(cardType) == 0
-				&& getCardNumberString().contains(cardNumber)
-				&& getExpiryDateString().compareTo(expiryDate) == 0
-				&& getFirstNameBillingString().compareToIgnoreCase(firstNameBilling) == 0
-				&& getLastNameBillingString().compareToIgnoreCase(lastNameBilling) == 0
-				&& getAddress1BillingString().compareToIgnoreCase(address1Billing) == 0
-				&& getAddress2BillingString().compareToIgnoreCase(address2Billing) == 0
-				&& getCityBillingString().compareToIgnoreCase(cityBilling) == 0
-				&& getStateBillingString().compareToIgnoreCase(stateBilling) == 0
-				&& getZipBillingString().compareTo(zipBilling) == 0
-				&& getCountryBillingString().compareToIgnoreCase(countryBilling) == 0
-				&& getFirstNameShippingString().compareToIgnoreCase(firstNameShipping) == 0
-				&& getLastNameShippingString().compareToIgnoreCase(lastNameShipping) == 0
-				&& getAddress1ShippingString().compareToIgnoreCase(address1Shipping) == 0
-				&& getAddress2ShippingString().compareToIgnoreCase(address2Shipping) == 0
-				&& getCityShippingString().compareToIgnoreCase(cityShipping) == 0
-				&& getStateShippingString().compareToIgnoreCase(stateShipping) == 0
-				&& getZipShippingString().compareTo(zipShipping) == 0
-				&& getCountryShippingString().compareToIgnoreCase(countryShipping) == 0
-				&& getItemIDString().compareToIgnoreCase(itemID) == 0
-				&& Utility.stringCompareRemoveAllWhiteSpaces(getDescriptionString(), description)
-				&& getQuantityString().compareTo(quantity) == 0
-				&& getPriceString().compareTo(price) == 0
-				&& getTotalCostString().compareTo(totalCost) == 0
-				&& getTotalString().compareTo(total) == 0;
 	}
 	
 	public HomePage clickSignoutButton() {

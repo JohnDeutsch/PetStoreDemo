@@ -21,7 +21,7 @@ public class MaleAdultBulldogItemPage {
 		PageFactory.initElements(driver, this);
 	}
 	
-	public String getItemNameString() {
+	public String getItemNameText() {
 		return itemName.getText();
 	}
 	

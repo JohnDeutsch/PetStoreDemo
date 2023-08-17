@@ -5,6 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import net.bytebuddy.asm.Advice.Unused;
+
+@SuppressWarnings ("unused")
 public class AdultMaleFinchItemPage {
 
 	private WebDriver driver;
